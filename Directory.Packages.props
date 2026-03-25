@@ -1,0 +1,9 @@
+<Project>
+  <ItemGroup>
+    <PackageVersion Include="SkiaSharp" Version="3.119.1" />
+    <PackageVersion Include="Uno.WinUI" Version="6.5.153" />
+    <PackageVersion Include="Uno.WinUI.Runtime.Skia.Win32" Version="6.5.153" />
+    <PackageVersion Include="Uno.WinUI.Graphics2DSK" Version="6.5.153" />
+    <PackageVersion Include="Uno.Resizetizer" Version="1.12.1" />
+  </ItemGroup>
+</Project>

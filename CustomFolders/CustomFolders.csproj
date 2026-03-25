@@ -1,0 +1,25 @@
+<Project Sdk="Uno.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-desktop</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <UnoSingleProject>true</UnoSingleProject>
+    <ApplicationTitle>CustomFolders</ApplicationTitle>
+    <ApplicationId>io.github.t03n.customfolders</ApplicationId>
+    <ApplicationPublisher>T03N</ApplicationPublisher>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <AssemblyName>CustomFolders</AssemblyName>
+    <RootNamespace>CustomFolders</RootNamespace>
+    <Description>A desktop workspace for making and applying folder icons.</Description>
+    <UnoFeatures>SkiaRenderer;</UnoFeatures>
+    <DisableImplicitUnoPackages>true</DisableImplicitUnoPackages>
+    <UnoDisableHotDesign>true</UnoDisableHotDesign>
+    <UnoDisableMCPSupport>true</UnoDisableMCPSupport>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Uno.WinUI" />
+    <PackageReference Include="Uno.WinUI.Runtime.Skia.Win32" />
+    <PackageReference Include="Uno.WinUI.Graphics2DSK" />
+    <PackageReference Include="Uno.Resizetizer" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

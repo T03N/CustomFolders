@@ -1,0 +1,6 @@
+<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 T03N -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+ <path fill="#47A6DA" d="M132 268 Q132 224 176 224 H416 L484 304 H848 Q892 304 892 348 V780 Q892 824 848 824 H176 Q132 824 132 780Z"/>
+ <path fill="#73C7ED" d="M132 390 Q132 348 176 348 H848 Q892 348 892 390 V780 Q892 824 848 824 H176 Q132 824 132 780Z"/>
+ <path stroke="#173E62" stroke-width="34" stroke-linecap="round" d="M400 516 H624 M400 606 H554"/>
+</svg>

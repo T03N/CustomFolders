@@ -1,0 +1,48 @@
+# Build output and local IDE state
+**/[Bb]in/
+**/[Oo]bj/
+.vs/
+.idea/
+.vscode/
+artifacts/
+TestResults/
+coverage/
+*.user
+*.suo
+*.log
+*.binlog
+*.pdb
+*.dll
+*.exe
+*.msix
+*.appx
+*.nupkg
+*.snupkg
+
+# Credentials, local configuration, and signing material
+.env
+.env.*
+!.env.example
+appsettings.local.json
+appsettings.*.local.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.snk
+*.publishsettings
+*.pubxml.user
+NuGet.Config.user
+
+# Editor and operating-system files
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+*.ico
+
+# Local scratch work
+scratch_*
+local/
