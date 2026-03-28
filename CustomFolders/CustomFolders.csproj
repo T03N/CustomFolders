@@ -22,4 +22,5 @@
     <PackageReference Include="Uno.WinUI.Graphics2DSK" />
     <PackageReference Include="Uno.Resizetizer" PrivateAssets="all" />
   </ItemGroup>
+  <ItemGroup><ProjectReference Include="..\CustomFolders.Core\CustomFolders.Core.csproj" /></ItemGroup>
 </Project>

@@ -6,4 +6,5 @@
     <File Path="global.json" />
   </Folder>
   <Project Path="CustomFolders/CustomFolders.csproj" />
+  <Project Path="CustomFolders.Core/CustomFolders.Core.csproj" />
 </Solution>
