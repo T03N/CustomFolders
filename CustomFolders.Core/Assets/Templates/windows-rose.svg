@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 T03N -->
+<defs>
+<linearGradient id="back" x1="0" y1="0" x2="0" y2="1"><stop offset="0.0000" stop-color="#EF8CB0"/><stop offset="1.0000" stop-color="#D84780"/></linearGradient>
+<linearGradient id="face" x1="0" y1="0" x2="0" y2="1"><stop offset="0.0000" stop-color="#FFCBDD"/><stop offset="0.5000" stop-color="#FFA8CA"/><stop offset="1.0000" stop-color="#F57CB0"/></linearGradient>
+<linearGradient id="edge" x1="0" y1="0" x2="0" y2="1"><stop offset="0.0000" stop-color="#D3467B"/><stop offset="1.0000" stop-color="#F475A9"/></linearGradient>
+<radialGradient id="light" cx=".04" cy=".19" r="1.08"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".34"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+<radialGradient id="shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#11202D" stop-opacity=".25"/><stop offset="1" stop-color="#11202D" stop-opacity="0"/></radialGradient>
+<clipPath id="front"><path d="M78 437C78 401 103 378 140 378H329C358 378 377 368 399 350L432 322C445 312 459 308 478 308H883C923 308 948 335 948 376V800C948 843 919 870 877 870H149C105 870 78 842 78 800Z"/></clipPath>
+</defs>
+<ellipse cx="512" cy="880" rx="446" ry="37" fill="url(#shadow)"/>
+<path d="M82 241C82 202 110 174 149 174H346C371 174 388 184 404 204L455 266H879C921 266 946 295 946 336V790C946 833 918 860 876 860H151C109 860 82 832 82 790Z" fill="url(#back)"/>
+<path d="M99 369H339C368 369 390 353 409 336L439 309H894Q926 309 926 344V779H99Z" fill="#FFF0F5" opacity=".88"/>
+<path d="M78 437C78 401 103 378 140 378H329C358 378 377 368 399 350L432 322C445 312 459 308 478 308H883C923 308 948 335 948 376V800C948 843 919 870 877 870H149C105 870 78 842 78 800Z" fill="url(#edge)" stroke="#8A3D5B" stroke-opacity=".14" stroke-width="2"/>
+<path d="M78 437C78 401 103 378 140 378H329C358 378 377 368 399 350L432 322C445 312 459 308 478 308H883C923 308 948 335 948 376V800C948 843 919 870 877 870H149C105 870 78 842 78 800Z" fill="url(#face)"/>
+<g clip-path="url(#front)">
+<rect x="76" y="306" width="874" height="568" fill="url(#light)"/>
+<path d="M84 434C84 404 106 385 141 385H330C360 385 384 373 404 355L436 329C450 319 463 316 480 316H881Q919 316 938 346" fill="none" stroke="#FFFFFF" stroke-opacity=".63" stroke-width="5" stroke-linecap="round"/>
+<path d="M92 804Q94 856 151 856H876Q923 856 934 821" fill="none" stroke="#F05D9B" stroke-opacity=".72" stroke-width="6"/>
+</g>
+</svg>
