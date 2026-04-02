@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 T03N -->
+<defs>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2=".12"><stop offset="0.0000" stop-color="#BBC5CB"/><stop offset="0.3333" stop-color="#F0F4F4"/><stop offset="0.6667" stop-color="#BBC9D0"/><stop offset="1.0000" stop-color="#86979F"/></linearGradient>
+<linearGradient id="rim" x1="0" y1="0" x2="1" y2="0"><stop offset="0.0000" stop-color="#E2E9EB"/><stop offset="0.5000" stop-color="#94A2AC"/><stop offset="1.0000" stop-color="#D5DEE1"/></linearGradient>
+<linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop offset="0.0000" stop-color="#C6D0D6"/><stop offset="0.5000" stop-color="#8E9EA9"/><stop offset="1.0000" stop-color="#AAB9C3"/></linearGradient>
+<linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0.0000" stop-color="#258F8C"/><stop offset="1.0000" stop-color="#106366"/></linearGradient>
+<radialGradient id="shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#132536" stop-opacity=".36"/><stop offset="1" stop-color="#132536" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow" cx=".24" cy=".12" r="1.1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".23"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+<radialGradient id="led" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#80FF80" stop-opacity="1"/><stop offset="1" stop-color="#80FF80" stop-opacity="0"/></radialGradient>
+<clipPath id="surface"><path d="M172 149Q179 116 217 116H804Q842 116 851 150L918 788Q924 831 884 846H137Q96 831 103 789Z"/></clipPath>
+</defs>
+<ellipse cx="512" cy="948" rx="443" ry="37" fill="url(#shadow)"/>
+<path d="M104 788Q100 826 140 840H884Q923 824 917 788L925 879Q925 922 880 934H141Q96 924 96 881Z" fill="url(#front)" stroke="#4B5F6D" stroke-width="2" stroke-opacity=".35"/>
+<path d="M172 149Q179 116 217 116H804Q842 116 851 150L918 788Q924 831 884 846H137Q96 831 103 789Z" fill="url(#rim)"/>
+<g clip-path="url(#surface)">
+<path d="M172 149Q179 116 217 116H804Q842 116 851 150L918 788Q924 831 884 846H137Q96 831 103 789Z" fill="url(#metal)"/>
+<path d="M188.38 80L110.31 880M196.75 80L120.62 880M205.12 80L130.94 880M213.50 80L141.25 880M221.88 80L151.56 880M230.25 80L161.88 880M238.62 80L172.19 880M247.00 80L182.50 880M255.38 80L192.81 880M263.75 80L203.12 880M272.12 80L213.44 880M280.50 80L223.75 880M288.88 80L234.06 880M297.25 80L244.38 880M305.62 80L254.69 880M314.00 80L265.00 880M322.38 80L275.31 880M330.75 80L285.62 880M339.12 80L295.94 880M347.50 80L306.25 880M355.88 80L316.56 880M364.25 80L326.88 880M372.62 80L337.19 880M381.00 80L347.50 880M389.38 80L357.81 880M397.75 80L368.12 880M406.12 80L378.44 880M414.50 80L388.75 880M422.88 80L399.06 880M431.25 80L409.38 880M439.62 80L419.69 880M448.00 80L430.00 880M456.38 80L440.31 880M464.75 80L450.62 880M473.12 80L460.94 880M481.50 80L471.25 880M489.88 80L481.56 880M498.25 80L491.88 880M506.62 80L502.19 880M515.00 80L512.50 880M523.38 80L522.81 880M531.75 80L533.12 880M540.12 80L543.44 880M548.50 80L553.75 880M556.88 80L564.06 880M565.25 80L574.38 880M573.62 80L584.69 880M582.00 80L595.00 880M590.38 80L605.31 880M598.75 80L615.62 880M607.12 80L625.94 880M615.50 80L636.25 880M623.88 80L646.56 880M632.25 80L656.88 880M640.62 80L667.19 880M649.00 80L677.50 880M657.38 80L687.81 880M665.75 80L698.12 880M674.12 80L708.44 880M682.50 80L718.75 880M690.88 80L729.06 880M699.25 80L739.38 880M707.62 80L749.69 880M716.00 80L760.00 880M724.38 80L770.31 880M732.75 80L780.62 880M741.12 80L790.94 880M749.50 80L801.25 880M757.88 80L811.56 880M766.25 80L821.88 880M774.62 80L832.19 880M783.00 80L842.50 880M791.38 80L852.81 880M799.75 80L863.12 880M808.12 80L873.44 880M816.50 80L883.75 880M824.88 80L894.06 880M833.25 80L904.38 880M841.62 80L914.69 880" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity=".055"/>
+<rect x="88" y="74" width="852" height="800" fill="url(#glow)"/>
+</g>
+<path d="M105 809Q111 841 146 846H878Q911 841 918 809" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-opacity=".72" stroke-linecap="round"/>
+<path d="M145 862H879Q901 862 901 880Q901 903 876 910H147Q121 902 121 881Q121 862 145 862Z" fill="#3E535E" opacity=".48"/>
+<path d="M148 868H875Q892 868 891 882Q890 898 872 903H150Q130 898 131 883Q130 868 148 868Z" fill="url(#rim)"/>
+<circle cx="824" cy="884" r="10" fill="#526B60"/>
+<circle cx="824" cy="884" r="6" fill="#79E971"/>
+<circle cx="822" cy="882" r="2" fill="#DBFFD5"/>
+</svg>
