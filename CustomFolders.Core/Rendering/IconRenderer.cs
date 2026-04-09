@@ -54,6 +54,7 @@ public sealed partial class IconRenderer : IDisposable
                 canvas.ClipRect(new SKRect(0, 0, CanvasSize, CanvasSize));
                 canvas.DrawPicture(svg.Picture);
                 DrawImageOverlay(canvas, preset, config, customIconPath);
+                DrawTextOverlays(canvas, preset, config, customIconPath);
             }
             finally { canvas.Restore(); }
         }
