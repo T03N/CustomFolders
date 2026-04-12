@@ -1,5 +1,148 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-using Microsoft.UI.Xaml.Controls;
+using System.Diagnostics;
 using CustomFolders.Models;
+using CustomFolders.Services;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using SkiaSharp;
+using Windows.Storage.Pickers;
+
 namespace CustomFolders.Presentation;
-public sealed partial class MainPage : Page { public MainPage() { InitializeComponent(); FolderPreview.Config = new FolderIconConfig(); } }
+
+public sealed class VariantButtonItem
+{
+    public required string Label { get; init; }
+    public required string VariantKey { get; init; }
+    public Style? ButtonStyle { get; init; }
+}
+
+public sealed partial class MainPage : Page
+{
+    private readonly FolderIconConfig _config = new();
+    private string? _selectedFolder;
+    private string? _customImage;
+    private bool _ready;
+    private bool _applying;
+    private const bool ApplyAvailable = false;
+
+    public MainPage()
+    {
+        InitializeComponent();
+        Loaded += (_, _) =>
+        {
+            _ready = true;
+            RefreshVariantList();
+            RefreshPreview();
+        };
+    }
+
+    private void RefreshVariantList()
+    {
+        var presets = _config.IconType == IconType.Windows11 ? FolderPresetCatalog.Windows : FolderPresetCatalog.Mac;
+        VariantList.ItemsSource = presets.Select(preset => new VariantButtonItem
+        {
+            Label = preset.Label,
+            VariantKey = preset.Variant.ToString(),
+            ButtonStyle = Resources[preset.Variant == _config.Variant ? "OptionBtnSelected" : "OptionBtn"] as Style,
+        }).ToArray();
+    }
+
+    private void RefreshPreview()
+    {
+        if (!_ready) return;
+        FolderPreview.Config = _config;
+        FolderPreview.CustomIconPath = _customImage;
+        FolderPreview.Invalidate();
+    }
+
+    private void SelectFamily(bool windows)
+    {
+        _config.Variant = windows ? FolderVariant.Windows11Default : FolderVariant.MacOsDefaultLight;
+        _config.IconType = windows ? IconType.Windows11 : IconType.MacOs;
+        BtnWindows.Style = (Style)Resources[windows ? "OptionBtnSelected" : "OptionBtn"];
+        BtnMacOs.Style = (Style)Resources[windows ? "OptionBtn" : "OptionBtnSelected"];
+        RefreshVariantList();
+        RefreshPreview();
+    }
+
+    private void BtnWindows_Click(object sender, RoutedEventArgs e) => SelectFamily(true);
+    private void BtnMacOs_Click(object sender, RoutedEventArgs e) => SelectFamily(false);
+
+    private void VariantBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button button || !Enum.TryParse<FolderVariant>(button.Tag?.ToString(), out var variant)) return;
+        var preset = FolderPresetCatalog.Get(variant);
+        _config.Variant = preset.Variant;
+        _config.IconType = preset.Family;
+        RefreshVariantList();
+        RefreshPreview();
+    }
+
+    private static void InitializePicker(object picker)
+    {
+#if WINDOWS
+        var window = App.MainWindow ?? throw new InvalidOperationException("The application window is not ready.");
+        WinRT.Interop.InitializeWithWindow.Initialize(picker, WinRT.Interop.WindowNative.GetWindowHandle(window));
+#endif
+    }
+
+    private void SelectFolderBtn_Click(object sender, RoutedEventArgs e)
+    {  }
+
+    private void PickIconFile_Click(object sender, RoutedEventArgs e)
+    {  }
+
+    private void SearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key == Windows.System.VirtualKey.Enter) OpenImageSearch();
+    }
+    private void SearchBtn_Click(object sender, RoutedEventArgs e) => OpenImageSearch();
+    private void OpenImageSearch()
+    {
+        try
+        {
+            string query = SearchBox.Text?.Trim() ?? "";
+            var destination = query.Length == 0 ? "https://www.flaticon.com/"
+                : "https://www.flaticon.com/search?word=" + Uri.EscapeDataString(query) + "&type=icon";
+            Process.Start(new ProcessStartInfo(destination) { UseShellExecute = true });
+        }
+        catch (Exception ex) { ShowStatus($"Could not open the browser: {ex.Message}", false); }
+    }
+
+    private void TextLabelBox_TextChanged(object sender, TextChangedEventArgs e)
+    {  }
+
+    private void EmojiIconBox_TextChanged(object sender, TextChangedEventArgs e)
+    {  }
+
+    private void OnEmojiFlyoutOpened(object sender, object e)
+    {  }
+    private void EmojiGridView_ItemClick(object sender, ItemClickEventArgs e)
+    {  }
+    private void AdjustColor_Changed(object sender, RoutedEventArgs e)
+    {  }
+    private void ScaleSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {  }
+    private void IconOffsetSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {  }
+    private void TextOffsetSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {  }
+
+    private void ExportImageBtn_Click(object sender, RoutedEventArgs e)
+    {  }
+
+    private void ApplyBtn_Click(object sender, RoutedEventArgs e)
+    {  }
+
+    private void ShowStatus(string message, bool success)
+    {
+        StatusPanel.Background = new SolidColorBrush(success ? Windows.UI.Color.FromArgb(255, 28, 64, 54) : Windows.UI.Color.FromArgb(255, 77, 38, 42));
+        StatusPanel.BorderBrush = new SolidColorBrush(success ? Windows.UI.Color.FromArgb(255, 91, 184, 141) : Windows.UI.Color.FromArgb(255, 222, 124, 133));
+        StatusText.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 240, 245, 249));
+        StatusText.Text = message;
+        StatusPanel.Visibility = Visibility.Visible;
+    }
+}
