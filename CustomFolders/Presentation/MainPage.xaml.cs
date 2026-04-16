@@ -89,11 +89,41 @@ public sealed partial class MainPage : Page
 #endif
     }
 
-    private void SelectFolderBtn_Click(object sender, RoutedEventArgs e)
-    {  }
+    private async void SelectFolderBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var picker = new FolderPicker();
+            picker.FileTypeFilter.Add("*");
+            InitializePicker(picker);
+            var folder = await picker.PickSingleFolderAsync();
+            if (folder is null) return;
+            _selectedFolder = folder.Path;
+            SelectedFolderText.Text = _selectedFolder;
+            SelectedFolderPanel.Visibility = Visibility.Visible;
+            ApplyBtn.IsEnabled = ApplyAvailable;
+        }
+        catch (Exception ex) { ShowStatus($"Could not select a folder: {ex.Message}", false); }
+    }
 
-    private void PickIconFile_Click(object sender, RoutedEventArgs e)
-    {  }
+    private async void PickIconFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var picker = new FileOpenPicker();
+            foreach (var extension in new[] { ".png", ".jpg", ".jpeg", ".bmp" }) picker.FileTypeFilter.Add(extension);
+            InitializePicker(picker);
+            var file = await picker.PickSingleFileAsync();
+            if (file is null) return;
+            // Validate the complete composition before changing the current selection.
+            using var candidate = FolderIconService.RenderIcon(_config, file.Path);
+            _customImage = file.Path;
+            PickedIconLabel.Text = Path.GetFileName(file.Path);
+            StatusPanel.Visibility = Visibility.Collapsed;
+            RefreshPreview();
+        }
+        catch (Exception ex) { ShowStatus($"Could not open the image: {ex.Message}", false); }
+    }
 
     private void SearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
@@ -113,23 +143,73 @@ public sealed partial class MainPage : Page
     }
 
     private void TextLabelBox_TextChanged(object sender, TextChangedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.Text = TextLabelBox.Text;
+        RefreshPreview();
+    }
 
     private void EmojiIconBox_TextChanged(object sender, TextChangedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.EmojiIcon = EmojiIconBox.Text;
+        // Typing an emoji switches away from the custom image layer.
+        if (!string.IsNullOrWhiteSpace(_config.EmojiIcon))
+        {
+            _customImage = null;
+            PickedIconLabel.Text = "Emoji selected";
+        }
+        RefreshPreview();
+    }
 
     private void OnEmojiFlyoutOpened(object sender, object e)
-    {  }
+    {
+        if (EmojiPickerPivot.Items.Count != 0) return;
+        foreach (var category in EmojiData.GetCategories())
+        {
+            var grid = new GridView
+            {
+                ItemsSource = category.Emojis,
+                SelectionMode = ListViewSelectionMode.None,
+                IsItemClickEnabled = true,
+                ItemTemplate = (DataTemplate)Resources["EmojiTemplate"],
+                Padding = new Thickness(8),
+            };
+            grid.ItemClick += EmojiGridView_ItemClick;
+            EmojiPickerPivot.Items.Add(new PivotItem { Header = category.Icon, Content = grid });
+        }
+    }
     private void EmojiGridView_ItemClick(object sender, ItemClickEventArgs e)
-    {  }
+    {
+        if (e.ClickedItem is string emoji) { EmojiIconBox.Text = emoji; EmojiFlyout.Hide(); }
+    }
     private void AdjustColor_Changed(object sender, RoutedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.AdjustColor = AdjustColorCheck.IsChecked == true;
+        RefreshPreview();
+    }
     private void ScaleSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.ScaleFactor = e.NewValue;
+        ScaleLabel.Text = $"{e.NewValue:P0}";
+        RefreshPreview();
+    }
     private void IconOffsetSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.IconOffsetY = e.NewValue;
+        IconPosLabel.Text = $"{e.NewValue:0}px";
+        RefreshPreview();
+    }
     private void TextOffsetSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-    {  }
+    {
+        if (!_ready) return;
+        _config.TextOffsetY = e.NewValue;
+        TextPosLabel.Text = $"{e.NewValue:0}px";
+        RefreshPreview();
+    }
 
     private void ExportImageBtn_Click(object sender, RoutedEventArgs e)
     {  }

@@ -182,7 +182,7 @@
               <StackPanel>
                 <TextBlock Text="PROJECT" Style="{StaticResource PanelTitle}"/>
                 <TextBlock Text="TARGET FOLDER" Style="{StaticResource ControlLabel}"/>
-                <Button x:Name="SelectFolderBtn" IsEnabled="False"
+                <Button x:Name="SelectFolderBtn"
                         Content="Select Folder"
                         Style="{StaticResource ModernBtn}"
                         Click="SelectFolderBtn_Click"/>
@@ -290,7 +290,7 @@
       <!-- ══════════════════════════════════════════════════════════════
            RIGHT SIDEBAR
            ══════════════════════════════════════════════════════════════ -->
-      <Border Grid.Column="2" IsHitTestVisible="False" Opacity="0.65"
+      <Border Grid.Column="2"
               Background="{StaticResource SidebarBg}"
               BorderBrush="{StaticResource PanelBorder}"
               BorderThickness="1,0,0,0">
@@ -337,7 +337,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                   </Grid.ColumnDefinitions>
-                  <TextBox x:Name="EmojiIconBox" IsEnabled="False"
+                  <TextBox x:Name="EmojiIconBox"
                            PlaceholderText="Enter text or emoji..."
                            Style="{StaticResource ModernInput}"
                            TextChanged="EmojiIconBox_TextChanged"
@@ -395,7 +395,7 @@
                     BorderThickness="0,0,0,1">
               <StackPanel>
                 <TextBlock Text="TEXT LABEL" Style="{StaticResource PanelTitle}"/>
-                <TextBox x:Name="TextLabelBox" IsEnabled="False"
+                <TextBox x:Name="TextLabelBox"
                          PlaceholderText="Enter folder name…"
                          MaxLength="20"
                          Style="{StaticResource ModernInput}"
@@ -412,7 +412,7 @@
 
                 <!-- Match theme colours -->
                 <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,16">
-                  <CheckBox x:Name="AdjustColorCheck" IsEnabled="False"
+                  <CheckBox x:Name="AdjustColorCheck"
                             IsChecked="True"
                             Checked="AdjustColor_Changed"
                             Unchecked="AdjustColor_Changed"/>
@@ -434,7 +434,7 @@
                                Foreground="{StaticResource AccentBlue}"
                                HorizontalAlignment="Right"/>
                   </Grid>
-                  <Slider x:Name="ScaleSlider" IsEnabled="False"
+                  <Slider x:Name="ScaleSlider"
                           Minimum="0.5" Maximum="2" Value="1" StepFrequency="0.1"
                           ValueChanged="ScaleSlider_ValueChanged"/>
                 </StackPanel>
@@ -451,7 +451,7 @@
                                Foreground="{StaticResource AccentBlue}"
                                HorizontalAlignment="Right"/>
                   </Grid>
-                  <Slider x:Name="IconOffsetSlider" IsEnabled="False"
+                  <Slider x:Name="IconOffsetSlider"
                           Minimum="-100" Maximum="100" Value="0" StepFrequency="1"
                           ValueChanged="IconOffsetSlider_ValueChanged"/>
                 </StackPanel>
@@ -468,7 +468,7 @@
                                Foreground="{StaticResource AccentBlue}"
                                HorizontalAlignment="Right"/>
                   </Grid>
-                  <Slider x:Name="TextOffsetSlider" IsEnabled="False"
+                  <Slider x:Name="TextOffsetSlider"
                           Minimum="-100" Maximum="100" Value="0" StepFrequency="1"
                           ValueChanged="TextOffsetSlider_ValueChanged"/>
                 </StackPanel>
