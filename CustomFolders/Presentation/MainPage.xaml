@@ -482,7 +482,7 @@
               <StackPanel>
                 <TextBlock Text="EXPORT &amp; SAVE" Style="{StaticResource PanelTitle}"/>
 
-                <Button x:Name="ExportImageBtn" IsEnabled="False"
+                <Button x:Name="ExportImageBtn"
                         Content="Export as Image..."
                         Style="{StaticResource ModernBtn}"
                         Margin="0,0,0,10"

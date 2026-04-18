@@ -211,8 +211,25 @@ public sealed partial class MainPage : Page
         RefreshPreview();
     }
 
-    private void ExportImageBtn_Click(object sender, RoutedEventArgs e)
-    {  }
+    private async void ExportImageBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var picker = new FileSavePicker { SuggestedFileName = "custom_folder_icon", SuggestedStartLocation = PickerLocationId.PicturesLibrary };
+            picker.FileTypeChoices.Add("PNG image", new[] { ".png" });
+            InitializePicker(picker);
+            var file = await picker.PickSaveFileAsync();
+            if (file is null) return;
+            using var bitmap = FolderIconService.RenderIcon(_config, _customImage);
+            using var image = SKImage.FromBitmap(bitmap);
+            using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+            using var output = await file.OpenStreamForWriteAsync();
+            output.SetLength(0);
+            data.SaveTo(output);
+            ShowStatus("PNG exported.", true);
+        }
+        catch (Exception ex) { ShowStatus($"Export failed: {ex.Message}", false); }
+    }
 
     private void ApplyBtn_Click(object sender, RoutedEventArgs e)
     {  }
