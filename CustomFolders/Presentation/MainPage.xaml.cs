@@ -26,7 +26,7 @@ public sealed partial class MainPage : Page
     private string? _customImage;
     private bool _ready;
     private bool _applying;
-    private const bool ApplyAvailable = false;
+    private const bool ApplyAvailable = true;
 
     public MainPage()
     {
@@ -231,8 +231,26 @@ public sealed partial class MainPage : Page
         catch (Exception ex) { ShowStatus($"Export failed: {ex.Message}", false); }
     }
 
-    private void ApplyBtn_Click(object sender, RoutedEventArgs e)
-    {  }
+    private async void ApplyBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (_applying || string.IsNullOrWhiteSpace(_selectedFolder)) return;
+        _applying = true;
+        ApplyBtn.IsEnabled = false;
+        ApplyBtn.Content = "Applying…";
+        try
+        {
+            using var bitmap = FolderIconService.RenderIcon(_config, _customImage);
+            var error = await FolderIconService.ApplyIconToFolderAsync(_selectedFolder, bitmap);
+            ShowStatus(error ?? "Icon applied. Explorer may take a moment to refresh.", error is null);
+        }
+        catch (Exception ex) { ShowStatus($"Could not apply the icon: {ex.Message}", false); }
+        finally
+        {
+            _applying = false;
+            ApplyBtn.Content = "Apply to Folder";
+            ApplyBtn.IsEnabled = ApplyAvailable && _selectedFolder is not null;
+        }
+    }
 
     private void ShowStatus(string message, bool success)
     {
