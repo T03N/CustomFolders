@@ -1,6 +1,12 @@
 <!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 T03N -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
- <path fill="#47A6DA" d="M132 268 Q132 224 176 224 H416 L484 304 H848 Q892 304 892 348 V780 Q892 824 848 824 H176 Q132 824 132 780Z"/>
- <path fill="#73C7ED" d="M132 390 Q132 348 176 348 H848 Q892 348 892 390 V780 Q892 824 848 824 H176 Q132 824 132 780Z"/>
- <path stroke="#173E62" stroke-width="34" stroke-linecap="round" d="M400 516 H624 M400 606 H554"/>
+<defs><linearGradient id="face" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#84c4e5"/><stop offset="1" stop-color="#298dc0"/></linearGradient><linearGradient id="tab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ecc986"/><stop offset="1" stop-color="#dfa637"/></linearGradient></defs>
+
+<path d="M140 302 Q140 244 198 244 H379 Q407 244 426 267 L473 322 H825 Q884 322 884 381 V756 Q884 816 824 816 H200 Q140 816 140 756Z" fill="url(#tab)"/>
+<path d="M151 374 H873 Q903 374 899 406 L867 774 Q863 826 811 826 H213 Q161 826 157 774 L125 406 Q122 374 151 374Z" fill="url(#face)"/>
+<path d="M169 389 H854" stroke="#D3F1FF" stroke-width="9" stroke-linecap="round" opacity=".65"/>
+<rect x="347" y="481" width="146" height="146" rx="34" fill="#F0FAFF"/>
+<path d="M548 493 H664 M548 552 H629 M359 682 H664" stroke="#164C70" stroke-width="29" stroke-linecap="round"/>
+<path d="M386 550 L411 577 L457 524" fill="none" stroke="#25789F" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+
 </svg>

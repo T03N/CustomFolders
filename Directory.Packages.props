@@ -5,5 +5,8 @@
     <PackageVersion Include="Uno.WinUI.Runtime.Skia.Win32" Version="6.5.153" />
     <PackageVersion Include="Uno.WinUI.Graphics2DSK" Version="6.5.153" />
     <PackageVersion Include="Uno.Resizetizer" Version="1.12.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="xunit" Version="2.9.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
 </Project>

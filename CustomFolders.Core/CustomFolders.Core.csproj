@@ -9,4 +9,5 @@
       <LogicalName>CustomFolders.Templates.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup><InternalsVisibleTo Include="CustomFolders.Tests" /></ItemGroup>
 </Project>

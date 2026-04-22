@@ -7,4 +7,5 @@
   </Folder>
   <Project Path="CustomFolders/CustomFolders.csproj" />
   <Project Path="CustomFolders.Core/CustomFolders.Core.csproj" />
+  <Project Path="CustomFolders.Tests/CustomFolders.Tests.csproj" />
 </Solution>
