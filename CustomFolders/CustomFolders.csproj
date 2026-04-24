@@ -23,4 +23,12 @@
     <PackageReference Include="Uno.Resizetizer" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup><ProjectReference Include="..\CustomFolders.Core\CustomFolders.Core.csproj" /></ItemGroup>
+  <ItemGroup>
+    <Content Include="..\COPYING;..\THIRD_PARTY_NOTICES.md">
+      <Link>Legal\%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\LICENSES\*.txt">
+      <Link>Legal\LICENSES\%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
