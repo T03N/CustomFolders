@@ -23,7 +23,7 @@ Applying an icon creates `.customfolders.ico` and updates `desktop.ini`. Other f
 
 ## License and credits
 
-Copyright (c) 2026 T03N. Application code, tests, and documentation are **GPL-3.0-or-later**; see [COPYING](COPYING). Original folder and drive SVGs and CustomFolders branding are **MIT**; see [LICENSES/MIT.txt](LICENSES/MIT.txt).
+Copyright (c) 2026 T03N. Application code, tests, and documentation are **GPL-3.0-or-later**; see [LICENSE](LICENSE). Original folder and drive SVGs and CustomFolders branding are **MIT**; see [LICENSES/MIT.txt](LICENSES/MIT.txt).
 
 All 16 presets are self-contained vector drawings using paths, shapes, gradients, and vector texture. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for framework and package credits.
 

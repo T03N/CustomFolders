@@ -24,7 +24,7 @@
   </ItemGroup>
   <ItemGroup><ProjectReference Include="..\CustomFolders.Core\CustomFolders.Core.csproj" /></ItemGroup>
   <ItemGroup>
-    <Content Include="..\COPYING;..\THIRD_PARTY_NOTICES.md">
+    <Content Include="..\LICENSE;..\THIRD_PARTY_NOTICES.md">
       <Link>Legal\%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="..\LICENSES\*.txt">
